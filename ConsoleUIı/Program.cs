@@ -12,21 +12,33 @@ namespace ConsoleUIı
     {
         static void Main(string[] args)
         {
-            //  ProductTest();
-           // BrandManger brandManager = new BrandManger(new EfBrandDal());
-            //Brand brand1 = new Brand { Id = 1, BrandName = "mercedes" };
-            //Brand brand2 = new Brand { Id = 2, BrandName = "bmm" };
-            //Brand brand3 = new Brand { Id = 3, BrandName = "fiat" };
+            //ProductTest();
+            //SystemTest();
 
-            //brandManager.Add(brand1);
-            //brandManager.Add(brand2);
-            //brandManager.Add(brand3);
+            ColorTest();
 
-            //brandManager.Delete(brand3);
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetCarDetails();
 
-            //brand2.BrandName = "bmw";
-            //brandManager.Update(brand2);
+            if (result.Success == true)
+            {
 
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.CarName + "/" + car.BrandName);
+                }
+
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+
+        }
+
+        private static void ColorTest()
+        {
             ColorManger colorManager = new ColorManger(new EfColorDal());
             Color color1 = new Color { Id = 1, ColorName = "Green" };
             Color color2 = new Color { Id = 2, ColorName = "Yellow" };
@@ -40,21 +52,41 @@ namespace ConsoleUIı
 
             color2.ColorName = "Blue";
             colorManager.update(color2);
-            
-
         }
-        
+
+        private static void SystemTest()
+        {
+            BrandManger brandManager = new BrandManger(new EfBrandDal());
+            Brand brand1 = new Brand { Id = 1, BrandName = "mercedes" };
+            Brand brand2 = new Brand { Id = 2, BrandName = "bmm" };
+            Brand brand3 = new Brand { Id = 3, BrandName = "fiat" };
+
+            brandManager.Add(brand1);
+            brandManager.Add(brand2);
+            brandManager.Add(brand3);
+
+            brandManager.Delete(brand3);
+
+            brand2.BrandName = "bmw";
+            brandManager.Update(brand2);
+        }
 
 
-        // private static void ProductTest()
+
+
+
+
+
+        //private static void ProductTest()
         //{
-        //  CarManager carManager = new CarManager(new EfCarDal());
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    var result = CarManager.GetCarDetails();
 
-        //foreach (var carr in carManager.GetAll())
-        //{
-        //  Console.WriteLine(carr.BrandId);
+        //    foreach (var carr in carManager.GetAll())
+        //    {
+        //        Console.WriteLine(carr.BrandId);
 
-        //}
+        //    }
         //}
     }
 }
