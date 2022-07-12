@@ -14,9 +14,37 @@ namespace ConsoleUIı
         {
             //ProductTest();
             //SystemTest();
+            //ColorTest();
+            //MessagessTest();
 
-            ColorTest();
 
+            RentalTest();
+
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            //Rental rental = new Rental() { CarId = 1, CustomerId = 1, RentDate = new DateTime(2022, 07, 08), ReturnDate = new DateTime(2022, 09, 09) };
+            //rentalManager.Add(rental);
+
+            //Rental rental = new Rental() { Id = 100, CarId = 10, CustomerId = 20, RentDate = new DateTime(2022, 05, 05), ReturnDate = new DateTime(2022, 06, 12) };
+            //rentalManager.Update(rental);
+
+            //Rental rental = new Rental() { Id = 100, CarId = 10, CustomerId = 20, RentDate = new DateTime(2022, 08, 09), ReturnDate = new DateTime(2022, 10, 13) };
+            //rentalManager.Delete(rental);
+
+            var result = rentalManager.GetAll();
+
+            foreach (var rental in result.Data)
+            {
+                Console.WriteLine("Id : {0} / CarId : {1} / RentDate : {2} / ReturnDate : {3}", rental.CustomerId, rental.CarId, rental.RentDate, rental.ReturnDate);
+            }
+        }
+
+        private static void MessagessTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             var result = carManager.GetCarDetails();
 
@@ -33,8 +61,6 @@ namespace ConsoleUIı
             {
                 Console.WriteLine(result.Message);
             }
-
-
         }
 
         private static void ColorTest()
@@ -51,7 +77,7 @@ namespace ConsoleUIı
             colorManager.Delete(color3);
 
             color2.ColorName = "Blue";
-            colorManager.update(color2);
+            colorManager.Update(color2);
         }
 
         private static void SystemTest()
