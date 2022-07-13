@@ -40,6 +40,11 @@ namespace Business.concrete
             return new SuccessResult(Messages.CarRemoved);
         }
 
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id));
+        }
+
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour==22)
