@@ -21,7 +21,7 @@ namespace webAPI.Controllers
         }
 
 
-        [HttpPost("getall")]
+        [HttpGet("getall")]
 
         public IActionResult GetAll()
         {
@@ -34,7 +34,7 @@ namespace webAPI.Controllers
         }
 
 
-        [HttpPost("getbycustomerid")]
+        [HttpGet("getbycustomerid")]
 
         public IActionResult GetByCustomerId(int id)
         {

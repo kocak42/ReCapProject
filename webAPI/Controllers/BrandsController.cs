@@ -19,7 +19,7 @@ namespace webAPI.Controllers
             _brandService = brandService;
         }
 
-        [HttpPost("getbyid")]
+        [HttpGet("getbyid")]
 
         public IActionResult GetById(int id)
         {
@@ -30,7 +30,9 @@ namespace webAPI.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("getall")]
+
+
+        [HttpGet("getall")]
 
         public IActionResult GetAll()
         {
@@ -54,6 +56,8 @@ namespace webAPI.Controllers
             }
             return BadRequest(result.Message);
         }
+
+
         [HttpPost("delete")]
 
         public IActionResult Delete(Brand brand)

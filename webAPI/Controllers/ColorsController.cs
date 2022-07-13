@@ -20,7 +20,7 @@ namespace webAPI.Controllers
             _colorService = colorService;
         }
 
-        [HttpPost("getbyid")]
+        [HttpGet("getbyid")]
 
         public IActionResult GetById(int id)
         {
@@ -31,7 +31,7 @@ namespace webAPI.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("getall")]
+        [HttpGet("getall")]
 
         public IActionResult GetAll()
         {

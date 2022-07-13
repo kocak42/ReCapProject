@@ -20,7 +20,7 @@ namespace webAPI.Controllers
             _rentalService = rentalService;
         }
 
-        [HttpPost("getall")]
+        [HttpGet("getall")]
 
         public IActionResult GetAll()
         {
@@ -29,9 +29,9 @@ namespace webAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
-        [HttpPost("getbyrentalıd")]
+        [HttpGet("getbyrentalıd")]
 
         public IActionResult GetByRentalId(int id)
         {
@@ -40,10 +40,10 @@ namespace webAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
-        [HttpGet("add")]
+        [HttpPost("add")]
 
 
         public IActionResult Add(Rental rental)
@@ -53,11 +53,11 @@ namespace webAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
 
-        [HttpGet("delete")]
+        [HttpPost("delete")]
 
 
         public IActionResult Delete(Rental rental)
@@ -67,11 +67,11 @@ namespace webAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
 
-        [HttpGet("update")]
+        [HttpPost("update")]
 
 
         public IActionResult Update(Rental rental)
@@ -81,7 +81,7 @@ namespace webAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
     }
