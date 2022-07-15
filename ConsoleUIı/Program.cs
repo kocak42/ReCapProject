@@ -65,7 +65,7 @@ namespace ConsoleUIı
 
         private static void ColorTest()
         {
-            ColorManger colorManager = new ColorManger(new EfColorDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
             Color color1 = new Color { Id = 1, ColorName = "Green" };
             Color color2 = new Color { Id = 2, ColorName = "Yellow" };
             Color color3 = new Color { Id = 3, ColorName = "Purple" };
@@ -82,7 +82,7 @@ namespace ConsoleUIı
 
         private static void SystemTest()
         {
-            BrandManger brandManager = new BrandManger(new EfBrandDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
             Brand brand1 = new Brand { Id = 1, BrandName = "mercedes" };
             Brand brand2 = new Brand { Id = 2, BrandName = "bmm" };
             Brand brand3 = new Brand { Id = 3, BrandName = "fiat" };

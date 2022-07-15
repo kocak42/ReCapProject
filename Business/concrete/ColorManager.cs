@@ -9,11 +9,11 @@ using System.Text;
 
 namespace Business.concrete
 {
-    public class ColorManger : IColorService
+    public class ColorManager : IColorService
     {
         IColorDal _coloDal;
 
-        public ColorManger(IColorDal coloDal)
+        public ColorManager(IColorDal coloDal)
         {
             _coloDal = coloDal;
         }
