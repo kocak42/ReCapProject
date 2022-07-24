@@ -13,6 +13,6 @@ namespace Business.Abstract
         IResult Delete(Rental rental);
         IResult Update(Rental rental);
 
-        IDataResult<Rental> GetByRentalId(int id);
+        IDataResult<Rental> GetByRentalId(int rentalId);
     }
 }

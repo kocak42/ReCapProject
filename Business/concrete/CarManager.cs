@@ -40,9 +40,9 @@ namespace Business.concrete
             return new SuccessResult(Messages.CarRemoved);
         }
 
-        public IDataResult<Car> GetById(int id)
+        public IDataResult<Car> GetByCarId(int carID)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carID));
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -69,7 +69,7 @@ namespace Business.concrete
             return new SuccessDataResult<List<CarDetailsDto>> (_carDal.GetCarDetails()); 
         }
 
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult  Update(Car car)
         {
             _carDal.Update(car);

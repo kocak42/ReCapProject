@@ -18,7 +18,7 @@ namespace ConsoleUIı
             //MessagessTest();
 
 
-            RentalTest();
+            //RentalTest();
 
         }
 
@@ -66,9 +66,9 @@ namespace ConsoleUIı
         private static void ColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            Color color1 = new Color { Id = 1, ColorName = "Green" };
-            Color color2 = new Color { Id = 2, ColorName = "Yellow" };
-            Color color3 = new Color { Id = 3, ColorName = "Purple" };
+            Color color1 = new Color { ColorId = 1, ColorName = "Green" };
+            Color color2 = new Color { ColorId = 2, ColorName = "Yellow" };
+            Color color3 = new Color { ColorId = 3, ColorName = "Purple" };
 
             colorManager.Add(color1);
             colorManager.Add(color2);
@@ -83,9 +83,9 @@ namespace ConsoleUIı
         private static void SystemTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            Brand brand1 = new Brand { Id = 1, BrandName = "mercedes" };
-            Brand brand2 = new Brand { Id = 2, BrandName = "bmm" };
-            Brand brand3 = new Brand { Id = 3, BrandName = "fiat" };
+            Brand brand1 = new Brand { BrandId = 1, BrandName = "mercedes" };
+            Brand brand2 = new Brand { BrandId = 2, BrandName = "bmm" };
+            Brand brand3 = new Brand { BrandId = 3, BrandName = "fiat" };
 
             brandManager.Add(brand1);
             brandManager.Add(brand2);

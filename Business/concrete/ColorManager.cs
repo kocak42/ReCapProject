@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Contans;
+using Business.ValidationRules.FluenValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,7 +19,7 @@ namespace Business.concrete
         {
             _coloDal = coloDal;
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Color color)
         {
             _coloDal.Add(color);
@@ -36,11 +38,13 @@ namespace Business.concrete
             return new SuccessDataResult<List<Color>> (_coloDal.GetAll(),Messages.ColorListed);
         }
 
-        public IDataResult<Color> GetById(int ColorId)
+        public IDataResult<Color> GetByColorId(int ColorId)
         {
-            return new SuccessDataResult<Color>( _coloDal.Get(c => c.Id == ColorId),Messages.ColorListed);
+            return new SuccessDataResult<Color>(_coloDal.Get(c => c.ColorId == ColorId), Messages.ColorListed);
         }
 
+
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Color color)
         {
             _coloDal.Update(color);

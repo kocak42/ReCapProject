@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Contans
@@ -40,5 +41,12 @@ namespace Business.Contans
         public static string UserRemoved = "Kullanıcı silindi";
         public static string UserUpdated = "Kullanıcı güncellendi";
         public static string UserListed = "Kullanıcılar listelendi";
+        internal static string CarImagesListed;
+        internal static string CarImageDeleted;
+        internal static string CarImageAdded;
+        internal static string CarImageLimitExceded;
+        internal static string AuthorizationDenied;
+
+        public static string CarImageUpdated { get; internal set; }
     }
 }
