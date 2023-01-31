@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
@@ -7,6 +9,7 @@ namespace Business.Contans
 {
     public static class Messages
     {
+
         public static string CarAdded = "Araba eklendi";
         public static string CarNameInvalid = "Araba ismi geçersiz";
         public static string CarRemoved = "Araba silindi";
@@ -48,5 +51,13 @@ namespace Business.Contans
         internal static string AuthorizationDenied;
 
         public static string CarImageUpdated { get; internal set; }
+
+
+        public static string UserRegistered = "Kullanıcı kayıt edildi";
+        public static string UserNotFound = " Kullanıcı bulunamadı";
+        public static string PasswordError = "Şifre hatalı";
+        public static string SuccessfulLogin = "Bararıyla giriş yapıldı";
+        public static string UserAlreadyExists = "Kullanıcı zaten kayıtlı";
+        public static string AccessTokenCreated = "Giriş tokeni oluşturuldu";
     }
 }

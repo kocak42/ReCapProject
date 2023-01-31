@@ -39,7 +39,7 @@ namespace Business.concrete
 
             carImage.ImagePath = resultOfUpload.Message;
             carImage.Date = DateTime.Now;
-            carImage.ImageId = 0;
+            carImage.ImageId =1;
 
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarImageAdded);
