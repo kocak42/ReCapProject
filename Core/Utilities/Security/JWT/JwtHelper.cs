@@ -42,7 +42,7 @@ public class JwtHelper : ITokenHelper
     public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, UserCore user,
         SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
     {
-        var jwt = new JwtSecurityToken(
+         var jwt = new JwtSecurityToken(
             issuer: tokenOptions.Issuer,
             audience: tokenOptions.Audience,
             expires: _accessTokenExpiration,
