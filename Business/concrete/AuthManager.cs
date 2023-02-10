@@ -20,6 +20,9 @@ namespace Business.concrete
             _tokenHelper = tokenHelper;
         }
 
+       
+        
+
         public IDataResult<UserCore> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;
@@ -42,15 +45,15 @@ namespace Business.concrete
             var userToCheck = _userCoreService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<UserCore>(Messages.UserNotFound);
+                return new ErrorDataResult<UserCore>("Kullanici bulunamadi.");
             }
 
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<UserCore>(Messages.PasswordError);
+                return new ErrorDataResult<UserCore>("Parola hatasi");
             }
 
-            return new SuccessDataResult<UserCore>(userToCheck, Messages.SuccessfulLogin);
+            return new SuccessDataResult<UserCore>(userToCheck, "Basarili giris");
         }
 
         public IResult UserExists(string email)

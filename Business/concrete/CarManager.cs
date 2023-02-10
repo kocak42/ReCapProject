@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Contans;
 using Business.ValidationRules.FluenValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
@@ -23,6 +24,8 @@ namespace Business.concrete
         }
 
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
+
         public IResult Add(Car car)
         {
             _carDal.Add(car);
@@ -32,19 +35,19 @@ namespace Business.concrete
             return new SuccessResult(Messages.CarAdded);
             
         }
-
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
 
             return new SuccessResult(Messages.CarRemoved);
         }
-
+        [CacheAspect]
         public IDataResult<Car> GetByCarId(int carID)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carID));
         }
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour==22)
@@ -70,6 +73,7 @@ namespace Business.concrete
         }
 
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarSerice.Get")]
         public IResult  Update(Car car)
         {
             _carDal.Update(car);
