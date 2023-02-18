@@ -46,17 +46,15 @@ namespace DataAccess.Concrete
 
         public Car Get(Expression<Func<Car, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            var result = _car.SingleOrDefault();
+            return result;
         }
 
-        public List<Car> GetAll()
-        {
-            return _car;
-        }
+        
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return _car.ToList();
         }
 
         public List<Car> GetById(int id)
@@ -64,7 +62,27 @@ namespace DataAccess.Concrete
             return _car.Where(c => c.CarId == id).ToList();
         }
 
+        public List<Car> GetById(Expression<Func<Car, bool>> filter, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<CarDetailsDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailsDto> GetCars()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailsDto> GetCarsByBrandId(Expression<Func<Car, bool>> filter, int brandId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailsDto> GetCarsByColorId(Expression<Func<Car, bool>> filter, int colorId)
         {
             throw new NotImplementedException();
         }

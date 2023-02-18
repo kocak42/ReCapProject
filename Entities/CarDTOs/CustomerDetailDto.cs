@@ -3,14 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Concrete
+namespace Entities.CarDTOs
 {
-    public class Customer:IEntity
+    public class CustomerDetailDto : IDto
     {
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public string CustomerName { get; set; }
-        public string CompanyName { get; set; }
-
-
+       
     }
 }
