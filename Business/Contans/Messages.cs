@@ -51,7 +51,7 @@ namespace Business.Contans
         internal static string AuthorizationDenied;
 
         public static string CarImageUpdated { get; internal set; }
-
+        public static string Listed = "kullanıcı listelendi";
 
         public static string UserRegistered = "Kullanıcı kayıt edildi";
         public static string UserNotFound = " Kullanıcı bulunamadı";

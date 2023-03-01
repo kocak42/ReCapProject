@@ -13,57 +13,59 @@ namespace DataAccess.Concrete.EntityFrameWork
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarsContext>, ICarDal
     {
-        public List<Car> GetById(Expression<Func<Car, bool>> filter, int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<CarDetailsDto> GetCarDetails()
         {
-            using (CarsContext context = new CarsContext()) 
+            using (CarsContext context = new CarsContext())
             {
-                var result = from c in context.Cars
-                             join j in context.Colors on c.ColorId equals j.ColorId
-                             join b in context.Brandss on c.BrandId equals b.BrandId
-                             select new CarDetailsDto { CarName = c.Description, BrandName = b.BrandName, ColorName = j.ColorName, DailyPrice = c.DailyPrice };
+                var result = from car in context.Cars
+                             join brand in context.Brands on car.BrandId equals brand.BrandId
+                             join color in context.Colors on car.ColorId equals color.ColorId
+                             select new CarDetailsDto
+                             {
+                                 CarName = brand.BrandName,
+                                 CarsId = car.CarId,
+                                 BrandId = brand.BrandId,
+                                 ColorId = color.ColorId,
+                                 BrandName = brand.BrandName,
+                                 ColorName = color.ColorName,
+                                 DailyPrice = car.DailyPrice,
+                                 ModelYear = car.ModelYear,
+                                 Description = car.Description,
+                                 ModelName = car.ModelName,
+                                 ImagePath = (from img in context.CarImages
+                                              where img.CarId == car.CarId
+                                              select img.ImagePath).FirstOrDefault()
+
+                             };
                 return result.ToList();
             }
         }
 
-        public List<CarDetailsDto> GetCars()
+        public List<CarDetailsDto> GetCarDetailsByBrand(int brandId)
         {
             using (CarsContext context = new CarsContext())
             {
-                var result = from c in context.Cars
-                             join j in context.Colors on c.ColorId equals j.ColorId
-                             join b in context.Brandss on c.BrandId equals b.BrandId
-                             select new CarDetailsDto { CarName = c.Description, BrandName = b.BrandName, ColorName = j.ColorName, DailyPrice = c.DailyPrice };
-                return result.ToList();
-            }
-        }
+                var result = from car in context.Cars
+                             join brand in context.Brands on car.BrandId equals brand.BrandId
+                             join color in context.Colors on car.ColorId equals color.ColorId
+                             where car.BrandId == brandId
+                             select new CarDetailsDto
+                             {
+                                 CarName = brand.BrandName,
+                                 CarsId = car.CarId,
+                                 BrandId = brand.BrandId,
+                                 ColorId = color.ColorId,
+                                 BrandName = brand.BrandName,
+                                 ColorName = color.ColorName,
+                                 DailyPrice = car.DailyPrice,
+                                 ModelYear = car.ModelYear,
+                                 Description = car.Description,
+                                 ModelName = car.ModelName,
+                                 ImagePath = (from img in context.CarImages
+                                              where img.CarId == car.CarId
+                                              select img.ImagePath).FirstOrDefault()
 
-        public List<CarDetailsDto> GetCarsByBrandId(Expression<Func<Car, bool>> filter, int brandId)
-        {
-            using (CarsContext context = new CarsContext())
-            {
-                var result = from c in context.Cars
-                             join j in context.Colors on c.ColorId equals j.ColorId
-                             join b in context.Brandss on c.BrandId equals b.BrandId
-                             where b.BrandId == brandId
-                             select new CarDetailsDto { CarsId = c.CarId, BrandName = b.BrandName, ColorName = j.ColorName, Description = c.Description, DailyPrice = c.DailyPrice, ModelYear = c.ModelYear, BrandId = c.BrandId, ColorId = c.ColorId };
-                return result.ToList();
-            }
-        }
-        
-        public List<CarDetailsDto> GetCarsByColorId(Expression<Func<Car, bool>> filter, int colorId)
-        {
-            using (CarsContext context = new CarsContext())
-            {
-                var result = from c in context.Cars
-                             join j in context.Colors on c.ColorId equals j.ColorId
-                             join b in context.Brandss on c.BrandId equals b.BrandId
-                             where c.ColorId == colorId
-                             select new CarDetailsDto { CarsId = c.CarId, BrandName = b.BrandName, ColorName = j.ColorName, Description = c.Description, DailyPrice = c.DailyPrice, ModelYear = c.ModelYear, BrandId = c.BrandId, ColorId = c.ColorId };
+                             };
                 return result.ToList();
             }
         }

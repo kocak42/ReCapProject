@@ -56,21 +56,22 @@ namespace Business.concrete
             }
             return new SuccessDataResult<List<Car>>( _carDal.GetAll());
         }
-
-        public IDataResult<List<Car>> GetAllByBrandId(int id)
+       
+        public IDataResult<List<CarDetailsDto>> GetCarDetailByBrandId(int brandid)
         {
-            return new SuccessDataResult<List<Car>> (_carDal.GetAll(p => p.BrandId == id).ToList(),Messages.CarListed);
+            return new SuccessDataResult<List<CarDetailsDto>> (_carDal.GetCarDetails().Where(b=>b.BrandId==brandid).ToList());
         }
-
-        public IDataResult<List<Car>> GetAllByColorId(int id)
+       
+        public IDataResult<List<CarDetailsDto>> GetCarDetailByColorId(int colorid)
         {
-            return new SuccessDataResult<List<Car>>( _carDal.GetAll(p => p.ColorId == id).ToList(),Messages.CarListed);
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails().Where(c=>c.ColorId==colorid).ToList());
         }
-
+        [CacheAspect]
         public IDataResult<List<CarDetailsDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailsDto>> (_carDal.GetCarDetails()); 
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails());
         }
+
 
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarSerice.Get")]
@@ -79,6 +80,28 @@ namespace Business.concrete
             _carDal.Update(car);
 
             return new SuccessResult(Messages.CarUpdated);
+        }
+        
+        public IDataResult<List<CarDetailsDto>> GetAllByCarsDetailId(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails().Where(c=>c.CarsId==carId).ToList());
+        }
+        
+       
+        
+        
+
+        public IDataResult<List<CarDetailsDto>> GetAllByCarsId(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.GetCarDetails().Where(ca=>ca.CarsId==carId).ToList());
+        }
+
+        public IDataResult<List<CarDetailsDto>> GetCarDetailsByColorAndBrand(int brandId, int colorId)
+        {
+
+            return new SuccessDataResult<List<CarDetailsDto>>(
+               _carDal.GetCarDetails()
+               .Where(c => c.BrandId == brandId && c.ColorId == colorId).ToList());
         }
     }
 }

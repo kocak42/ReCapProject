@@ -16,5 +16,7 @@ namespace Entities.CarDTOs
         public DateTime ModelYear { get; set; }
         public int BrandId { get; set; }
         public int ColorId { get; set; }
+        public string ImagePath { get; set; }
+        public string ModelName { get; set; }
     }
 }

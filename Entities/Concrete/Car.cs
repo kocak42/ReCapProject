@@ -15,5 +15,6 @@ namespace Entities.Concrete
         public decimal DailyPrice { get; set; }
         public int ColorId { get; set; }
         public string Description { get; set; }
+        public string ModelName { get; set; }  
     }
 }

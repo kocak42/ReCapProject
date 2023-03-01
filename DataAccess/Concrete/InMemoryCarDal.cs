@@ -72,17 +72,31 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
+        public List<CarDetailsDto> GetCarDetailsByBrand(int brandId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailsDto> GetCarDetailsByCarId(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<CarDetailsDto> GetCars()
         {
             throw new NotImplementedException();
         }
 
-        public List<CarDetailsDto> GetCarsByBrandId(Expression<Func<Car, bool>> filter, int brandId)
+       
+
+        public List<CarDetailsDto> GetCarsByBrandId(int brandId)
         {
             throw new NotImplementedException();
         }
 
-        public List<CarDetailsDto> GetCarsByColorId(Expression<Func<Car, bool>> filter, int colorId)
+       
+
+        public List<CarDetailsDto> GetCarsByColorId(int colorId)
         {
             throw new NotImplementedException();
         }

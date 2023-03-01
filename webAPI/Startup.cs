@@ -86,6 +86,7 @@ namespace webAPI
             }
             //app.ConfigureCustomExceptionMiddleware();
             //app.UseCors(builder => builder.WithOrigins("sitenin domaini").AllowAnyHeader());
+            app.UseStaticFiles();
 
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200", "http://localhost:4201").AllowAnyHeader());
 
@@ -96,8 +97,6 @@ namespace webAPI
             app.UseAuthentication();
 
             app.UseAuthorization();
-
-
 
             app.UseEndpoints(endpoints =>
             {
